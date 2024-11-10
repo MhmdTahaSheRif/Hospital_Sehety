@@ -1,0 +1,39 @@
+/* footer.css */
+.footer_section {
+    background-color: #333;
+    color: #fff;
+    padding: 40px 0;
+}
+
+.footer_section h5 {
+    color: #fff;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.footer_links,
+.social_links {
+    list-style: none;
+    padding: 0;
+}
+
+.footer_links li,
+.social_links li {
+    margin-bottom: 10px;
+}
+
+.footer_links li a,
+.social_links li a {
+    color: #ddd;
+    text-decoration: none;
+}
+
+.footer_links li a:hover,
+.social_links li a:hover {
+    color: #fff;
+}
+
+.footer_bottom {
+    margin-top: 30px;
+    font-size: 14px;
+}

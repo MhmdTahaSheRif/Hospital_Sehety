@@ -1,0 +1,219 @@
+
+body {
+    overflow-x: hidden;
+    height: 100%;
+    position: relative;
+    max-width: 100%;
+    font-size: 1rem;
+}
+body>* {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(111, 133, 147, .1) #fff0;
+}
+* {
+    outline: none;
+    padding: 0;
+}
+*, *:before, *:after {
+    box-sizing: border-box;
+}
+div {
+    display: block;
+    unicode-bidi: isolate;
+}
+.vh-100{
+    height: 100vh !important;
+}
+div, ol, span, ul {
+    scrollbar-width: thin;
+}
+.login-form-bx {
+    padding-bottom: 0;
+    background-color: #fbfbfb;
+    overflow: hidden;
+}
+.row {
+    --bs-gutter-x: 30px;
+    --bs-gutter-y: 0;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: calc(-1* var(--bs-gutter-y));
+    margin-right: calc(-.5* var(--bs-gutter-x));
+    margin-left: calc(-.5* var(--bs-gutter-x));
+}
+.login-form-bx .box-skew, .login-form-bx .box-skew1 {
+    height: 100vh;
+    min-height: 100vh;
+    position: relative;
+}
+.login-form-bx .box-skew .authincation-content {
+    box-shadow: none;
+    position: absolute;
+    z-index: 1;
+    right: 50px;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 50px;
+    width: 500px;
+    background-color: #fff;
+}
+.authincation-content {
+    background: #fff;
+    box-shadow: 0 0 35px #9aa1ab26;
+    border-radius: 5px;
+}
+.login-form-bx .login-logo {
+    margin-bottom: 30px;
+    display: block;
+}
+a {
+    text-decoration: none;
+    color: #7e7e7e;
+}
+.login-form-bx .login-logo .logo-icon {
+    width: 60px;
+}
+.me-2 {
+    margin-right: .5rem !important;
+}
+img, svg {
+    vertical-align: middle;
+}
+.login-form-bx .form-control {
+    border: 1px solid #d3d3d3;
+}
+.btn-block {
+    width: 100%;
+    display: block;
+}
+.form-check-input[type=checkbox] {
+    border-radius: .25em;
+}
+.form-check-input {
+    top: -2px;
+    border-width: .125rem;
+    width: 1.25rem;
+    height: 1.25rem;
+    border-color: #36C95F;
+}
+.btn-primary:hover {
+    color: #fff;
+    background-color: #36C95F;
+    border-color: #36C95F;
+}
+.btn-primary {
+    color: #fff;
+    background-color: #36C95F;
+    border-color: #36C95F;
+}
+.btn {
+    padding: .938rem 1.5rem;
+    border-radius: .75rem;
+    font-weight: 500;
+    font-size: 1rem;
+}
+.login-form-bx .box-skew .authincation-content:after {
+    box-shadow: 0 12px 23px #3e495414;
+    background-color: #fff;
+    content: "";
+    height: 100%;
+    width: 200%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: -1;
+}
+.login-form-bx .box-skew1 {
+    z-index: 1;
+    background-color: #fbfbfb;
+}
+.login-form-bx .box-skew, .login-form-bx .box-skew1 {
+    height: 50vh;
+
+    position: relative;
+}
+.login-form-bx .box-skew1:after {
+    content: "";
+    background-image: url('../images/4.jpg');
+    background-size: cover;
+    background-position: center bottom;
+    height: 100%;
+    position: absolute;
+    width: 120%;
+    left: -30px;
+    top: 0;
+    z-index: -1;
+    transform: skew(-5deg);
+}
+
+
+/* Tablet Breakpoint */
+@media screen and (max-width: 991px) {
+    .login-form-bx .box-skew .authincation-content {
+        width: 400px;
+        right: 30px;
+        padding: 30px;
+    }
+    
+    .login-form-bx .box-skew1:after {
+        width: 130%;
+    }
+}
+
+/* Mobile Breakpoint */
+@media screen and (max-width: 767px) {
+    .login-form-bx .box-skew .authincation-content {
+        width: 90%;
+        right: 50%;
+        transform: translate(50%, -50%);
+        padding: 25px;
+    }
+    .login-form-bx .box-skew1 {
+        display: none !important;
+    }
+    
+    .login-form-bx .box-skew1 {
+        display: none;
+    }
+    
+    .login-form-bx .box-skew {
+        height: 100vh;
+    }
+    
+    .btn {
+        padding: .75rem 1.25rem;
+        font-size: 0.95rem;
+    }
+    
+    .login-form-bx .login-logo .logo-icon {
+        width: 50px;
+    }
+}
+
+/* Small Mobile Breakpoint */
+@media screen and (max-width: 480px) {
+    .login-form-bx .box-skew .authincation-content {
+        width: 100%;
+        padding: 20px;
+    }
+    
+    .form-control {
+        font-size: 0.95rem;
+    }
+    
+    .login-form-bx .login-logo {
+        margin-bottom: 20px;
+    }
+}
+
+/* Height-based media query for shorter screens */
+@media screen and (max-height: 600px) {
+    .login-form-bx .box-skew {
+        height: auto;
+        min-height: 100vh;
+    }
+    
+    .login-form-bx .box-skew .authincation-content {
+        padding: 20px;
+    }
+}

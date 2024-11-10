@@ -1,0 +1,59 @@
+.slider_section {
+    position: relative;
+  }
+  
+  .dot_design {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+  }
+  
+  .carousel-item {
+    display: flex;
+    align-items: center;
+  }
+  
+  .detail-box {
+    text-align: left;
+  }
+  
+  .play_btn button {
+    background-color: transparent;
+    border: none;
+    font-size: 24px;
+  }
+  
+  h1 span {
+    color: #ff5722;
+  }
+  
+  .carousel-btn-box {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    display: flex;
+    justify-content: space-between;
+    transform: translateY(-50%);
+  }
+  
+  .carousel-control-prev,
+  .carousel-control-next {
+    background-color: transparent;
+    border: none;
+  }
+  
+  .carousel-control-prev img,
+  .carousel-control-next img {
+    width: 30px;
+    height: 30px;
+  }
+  
+  .carousel-item img {
+    max-width: 100%;
+    height: auto;
+  }
+  
