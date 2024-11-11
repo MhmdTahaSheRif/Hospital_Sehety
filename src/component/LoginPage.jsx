@@ -1,29 +1,64 @@
-import React, { useState } from 'react';
-import '../css/login.css';
+import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import '../css/login.css';
 import logo from '../images/5.png';
+import axios from 'axios'; // Import axios
 
 const LoginPage = () => {
-    const [email, setEmail] = useState('');
+    const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    const navigate = useNavigate(); // Use useNavigate hook here
+    const [errorMessage, setErrorMessage] = useState('');
+    const [tokens, setTokens] = useState({ access: '', refresh: '' });
+    const [passwordError, setPasswordError] = useState('');
+    const navigate = useNavigate(); // Hook for navigation
 
-    const handleSubmit = (e) => {
+    // Regular expression for password validation
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+
+    const handleSubmit = async (e) => {
         e.preventDefault();
 
-        // Retrieve user data from localStorage
-        const storedUser = JSON.parse(localStorage.getItem('user'));
-
-        if (storedUser) {
-            // Compare entered email and password with stored data
-            if (email === storedUser.email && password === storedUser.password) {
-                console.log('Login successful');
-                navigate('/home'); // Redirect to dashboard or home page
-            } else {
-                alert('Invalid email or password');
-            }
+        // Check if password matches the regex
+        if (!passwordRegex.test(password)) {
+            setPasswordError('Password must be at least 8 characters long, contain at least one uppercase letter, one number, and one special character.');
+            return;
         } else {
-            alert('No user found. Please register first.');
+            setPasswordError('');  // Clear any previous password errors
+        }
+
+        try {
+            // Sending POST request to login endpoint
+            const response = await axios.post('http://10.100.100.149:500/API/login/', {
+                username: username,  // use the state values
+                password: password,
+            });
+
+            // Check if the response contains the tokens
+            if (response.data && response.data.access && response.data.refresh) {
+                // Store tokens in memory (in the component's state)
+                setTokens({
+                    access: response.data.access,
+                    refresh: response.data.refresh,
+                });
+
+                // Optionally store tokens in localStorage for persistence
+                
+                // localStorage.setItem('accessToken', response.data.access);
+                // localStorage.setItem('refreshToken', response.data.refresh);
+
+                // Redirect to home page after successful login
+                navigate('/home');
+            } else {
+                setErrorMessage('Login failed: No token received.');
+            }
+        } catch (error) {
+            console.error('Login error:', error);
+            // Handle error response more gracefully
+            if (error.response) {
+                setErrorMessage('Login failed: ' + (error.response.data?.message || 'Unknown error'));
+            } else {
+                setErrorMessage('Login failed: ' + error.message);
+            }
         }
     };
 
@@ -39,18 +74,18 @@ const LoginPage = () => {
                                 </a>
                                 <div className="mb-4">
                                     <h3 className="mb-1 font-w600">Welcome to Eres</h3>
-                                    <p>Sign in by entering information below</p>
+                                    <p>Sign in by entering the information below</p>
                                 </div>
                                 <form onSubmit={handleSubmit}>
                                     <div className="form-group">
                                         <label className="mb-2">
-                                            <strong>Email</strong><span className="required">*</span>
+                                            <strong>Username</strong><span className="required">*</span>
                                         </label>
                                         <input
-                                            type="email"
+                                            type="text"
                                             className="form-control"
-                                            value={email}
-                                            onChange={(e) => setEmail(e.target.value)}
+                                            value={username}  // Bind state to input
+                                            onChange={(e) => setUsername(e.target.value)}  
                                             required
                                         />
                                     </div>
@@ -61,26 +96,33 @@ const LoginPage = () => {
                                         <input
                                             type="password"
                                             className="form-control"
-                                            value={password}
-                                            onChange={(e) => setPassword(e.target.value)}
+                                            value={password}  // Bind state to input
+                                            onChange={(e) => setPassword(e.target.value)}  
                                             required
                                         />
+                                        {/* Show password validation error */}
+                                        {passwordError && <p className="text-danger">{passwordError}</p>}  
                                     </div>
+
+                                    {errorMessage && <p className="text-danger">{errorMessage}</p>}  {/* Show general error message */}
+
                                     <div className="text-center">
                                         <button type="submit" className="btn btn-primary btn-block">
                                             Sign In
                                         </button>
                                     </div>
                                 </form>
+
                                 <div className="new-account mt-2">
                                     <p className="mb-0">Don't have an account?
-                                        <Link className="text-primary" to="/">Sign up</Link>
+                                        <Link className="text-primary" to="/">Sign up</Link> 
                                     </p>
                                 </div>
                             </div>
                         </div>
+
                         <div className="col-lg-6 col-md-5 d-flex box-skew1">
-                            {/* You can add an image or additional content here */}
+                            {/* Additional content or image */}
                         </div>
                     </div>
                 </div>
