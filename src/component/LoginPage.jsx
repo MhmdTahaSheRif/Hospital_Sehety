@@ -42,7 +42,7 @@ const LoginPage = () => {
                 });
 
                 // Optionally store tokens in localStorage for persistence
-                
+
                 // localStorage.setItem('accessToken', response.data.access);
                 // localStorage.setItem('refreshToken', response.data.refresh);
 
@@ -73,13 +73,13 @@ const LoginPage = () => {
                                     <img src={logo} alt="" className="logo-icon me-2" />
                                 </a>
                                 <div className="mb-4">
-                                    <h3 className="mb-1 font-w600">Welcome to Eres</h3>
-                                    <p>Sign in by entering the information below</p>
+                                    <h3 className="mb-1 font-w600">أهلا بك في تطبيق صحتي</h3>
+                                    <p></p>
                                 </div>
                                 <form onSubmit={handleSubmit}>
                                     <div className="form-group">
                                         <label className="mb-2">
-                                            <strong>Username</strong><span className="required">*</span>
+                                        <span className="required">*</span>  <strong>أدخل اسم المستخدم</strong>
                                         </label>
                                         <input
                                             type="text"
@@ -91,7 +91,7 @@ const LoginPage = () => {
                                     </div>
                                     <div className="form-group">
                                         <label className="mb-2">
-                                            <strong>Password</strong><span className="required">*</span>
+                                        <span className="required">*</span>  <strong>أدخل الرقم السري</strong>
                                         </label>
                                         <input
                                             type="password"
@@ -108,14 +108,14 @@ const LoginPage = () => {
 
                                     <div className="text-center">
                                         <button type="submit" className="btn btn-primary btn-block">
-                                            Sign In
+                                            الدخول
                                         </button>
                                     </div>
                                 </form>
 
                                 <div className="new-account mt-2">
-                                    <p className="mb-0">Don't have an account?
-                                        <Link className="text-primary" to="/">Sign up</Link> 
+                                    <p className="mb-0">ليس لديك حساب ؟
+                                        <Link className="text-primary" to="/">انشاء حساب جديد</Link> 
                                     </p>
                                 </div>
                             </div>

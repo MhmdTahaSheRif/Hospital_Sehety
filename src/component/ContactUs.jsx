@@ -29,9 +29,9 @@ const ContactUs = () => {
     return (
         <div className="contact-us-page">
             <section className="contact-banner">
-                <div className="container">
-                    <h1>Contact Us</h1>
-                    <p>We would love to hear from you! Please fill out the form below, and we will get back to you as soon as possible.</p>
+            <div className="container" style={{ bottom: '20px' }}>
+            <h1>تواصل معنا </h1>
+                    <p></p>
                 </div>
             </section>
 
@@ -41,14 +41,14 @@ const ContactUs = () => {
                         <div className="col-lg-4 col-md-6">
                             <div className="contact-card">
                                 <FaPhoneAlt size={30} />
-                                <h4>Phone</h4>
+                                <h4>التليفون</h4>
                                 <p>+0201271858715</p>
                             </div>
                         </div>
                         <div className="col-lg-4 col-md-6">
                             <div className="contact-card">
                                 <FaEnvelope size={30} />
-                                <h4>Email</h4>
+                                <h4>البريد الالكتروني</h4>
                                 <p>mhmdtaha818@gmail.com</p>
                             </div>
                         </div>
@@ -61,11 +61,11 @@ const ContactUs = () => {
                 <div className="container">
                     <div className="row">
                         <div className="col-md-6">
-                            <h2>Send Us a Message</h2>
+                            <h2>ارسل لنا طلبك</h2>
                             <form onSubmit={handleSubmit}>
                                 <div className="form-row">
                                     <div className="form-group col-md-6">
-                                        <label>Your Name</label>
+                                        <label>اسمك</label>
                                         <input
                                             type="text"
                                             className="form-control"
@@ -75,7 +75,7 @@ const ContactUs = () => {
                                         />
                                     </div>
                                     <div className="form-group col-md-6">
-                                        <label>Your Email</label>
+                                        <label>بريدك الالكتروني</label>
                                         <input
                                             type="email"
                                             className="form-control"
@@ -86,7 +86,7 @@ const ContactUs = () => {
                                     </div>
                                 </div>
                                 <div className="form-group">
-                                    <label>Subject</label>
+                                    <label>عنوان الطلب</label>
                                     <input
                                         type="text"
                                         className="form-control"
@@ -95,7 +95,7 @@ const ContactUs = () => {
                                     />
                                 </div>
                                 <div className="form-group">
-                                    <label>Message</label>
+                                    <label>الطلب</label>
                                     <textarea
                                         className="form-control"
                                         rows="4"
@@ -104,9 +104,9 @@ const ContactUs = () => {
                                         required
                                     ></textarea>
                                 </div>
-                                <button type="submit" className="btn btn-primary">Submit</button>
+                                <button type="submit" className="btn btn-primary">ارسال</button>
                             </form>
-                            {submitted && <div className="alert alert-success mt-4">Your message has been sent successfully!</div>}
+                            {submitted && <div className="alert alert-success mt-4">تم ارسال الطلب بنجاح!</div>}
                         </div>
 
                         {/* Add the image next to the form */}

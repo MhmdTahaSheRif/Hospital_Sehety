@@ -109,15 +109,15 @@ const Register = () => {
                                     <img src={logo} alt="" className="logo-icon me-2" />
                                 </a>
                                 <div className="mb-4">
-                                    <h3 className="mb-1 font-w600">Create a New Account</h3>
-                                    <p>Register by filling the information below</p>
+                                    <h3 className="mb-1 font-w600">انشاء حساب جديد</h3>
+                                    <p></p>
                                 </div>
                                 <form onSubmit={handleSubmit}>
                                     {/* Form Group with Flexbox */}
                                     <div className="form-row">
                                         <div className="form-group">
                                             <label className="mb-2">
-                                                <strong>Username</strong><span className="required">*</span>
+                                           <span className="required">*</span>     <strong>اسم المستخدم</strong>
                                             </label>
                                             <input
                                                 type="text"
@@ -129,7 +129,7 @@ const Register = () => {
                                         </div>
                                         <div className="form-group">
                                             <label className="mb-2">
-                                                <strong>Email</strong><span className="required">*</span>
+                                            <span className="required">*</span>  <strong>البريد الالكتروني</strong>
                                             </label>
                                             <input
                                                 type="email"
@@ -143,7 +143,7 @@ const Register = () => {
                                     <div className="form-row">
                                         <div className="form-group">
                                             <label className="mb-2">
-                                                <strong>Password</strong><span className="required">*</span>
+                                            <span className="required">*</span><strong>الرقم السري</strong>
                                             </label>
                                             <input
                                                 type="password"
@@ -155,7 +155,7 @@ const Register = () => {
                                         </div>
                                         <div className="form-group">
                                             <label className="mb-2">
-                                                <strong>Confirm Password</strong><span className="required">*</span>
+                                            <span className="required">*</span>  <strong>تأكيد الرقم السري</strong>
                                             </label>
                                             <input
                                                 type="password"
@@ -170,7 +170,7 @@ const Register = () => {
                                     <div className="form-row">
                                         <div className="form-group">
                                             <label className="mb-2">
-                                                <strong>Full Name</strong><span className="required">*</span>
+                                            <span className="required">*</span><strong>الاسم بالكامل</strong>
                                             </label>
                                             <input
                                                 type="text"
@@ -182,7 +182,7 @@ const Register = () => {
                                         </div>
                                         <div className="form-group">
                                             <label className="mb-2">
-                                                <strong>National Number</strong><span className="required">*</span>
+                                            <span className="required">*</span><strong>الرقم القومي</strong>
                                             </label>
                                             <input
                                                 type="text"
@@ -197,7 +197,7 @@ const Register = () => {
                                     <div className="form-row">
                                         <div className="form-group">
                                             <label className="mb-2">
-                                                <strong>Contact Number</strong><span className="required">*</span>
+                                            <span className="required">*</span><strong>رقم التواصل</strong>
                                             </label>
                                             <input
                                                 type="text"
@@ -209,7 +209,7 @@ const Register = () => {
                                         </div>
                                         <div className="form-group">
                                             <label className="mb-2">
-                                                <strong>Address</strong><span className="required">*</span>
+                                            <span className="required">*</span> <strong>العنوان</strong>
                                             </label>
                                             <input
                                                 type="text"
@@ -224,7 +224,7 @@ const Register = () => {
                                     <div className="form-row">
                                         <div className="form-group">
                                             <label className="mb-2">
-                                                <strong>Gender</strong><span className="required">*</span>
+                                            <span className="required">*</span><strong>النوع</strong>
                                             </label>
                                             <select
                                                 className="form-control"
@@ -232,14 +232,14 @@ const Register = () => {
                                                 onChange={(e) => setGender(e.target.value)}
                                                 required
                                             >
-                                                <option value="">Select Gender</option>
-                                                <option value="Male">Male</option>
-                                                <option value="Female">Female</option>
+                                                <option value="">اختر النوع</option>
+                                                <option value="Male">ذكر</option>
+                                                <option value="Female">انثى</option>
                                             </select>
                                         </div>
                                         <div className="form-group">
                                             <label className="mb-2">
-                                                <strong>Date of Birth</strong><span className="required">*</span>
+                                            <span className="required">*</span><strong>تاريخ الميلاد</strong>
                                             </label>
                                             <input
                                                 type="date"
@@ -255,13 +255,13 @@ const Register = () => {
 
                                     <div className="text-center">
                                         <button type="submit" className="btn btn-primary btn-block">
-                                            Register
+                                            التسجيل
                                         </button>
                                     </div>
                                 </form>
                                 <div className="new-account mt-2">
-                                    <p className="mb-0">Already have an account?
-                                        <Link className="text-primary" to="/login">Sign in</Link>
+                                    <p className="mb-0">لديك حساب بالفعل ؟
+                                        <Link className="text-primary" to="/login">تسجيل الدخول</Link>
                                     </p>
                                 </div>
                             </div>

@@ -5,25 +5,7 @@ import { Link } from 'react-router-dom';
 const HeaderSection = ({ isLoggedIn }) => {
     return (
         <header className="header_section">
-            <div className="header_top">
-                <div className="container">
-                    <div className="contact_nav">
-                        <Link to="tel:+0201271858715">
-                            <i className="fa fa-phone" aria-hidden="true"></i>
-                            <span> Call : +0201271858715</span>
-                        </Link>
-                        <Link to="mailto:mhmdtaha818@gmail.com">
-                            <i className="fa fa-envelope" aria-hidden="true"></i>
-                            <span> Email : mhmdtaha818@gmail.com</span>
-                        </Link>
-                        {/* Added Location Link with functionality */}
-                        <Link to="/location">
-                            <i className="fa fa-map-marker" aria-hidden="true"></i>
-                            <span> Location</span>
-                        </Link>
-                    </div>
-                </div>
-            </div>
+    
             <div className="header_bottom">
                 <div className="container-fluid">
                     <nav className="navbar navbar-expand-lg custom_nav-container">
@@ -46,34 +28,22 @@ const HeaderSection = ({ isLoggedIn }) => {
                                 <div className="d-flex mr-auto flex-column flex-lg-row align-items-center">
                                     <ul className="navbar-nav">
                                         <li className="nav-item active">
-                                            <Link className="nav-link" to="/home">
-                                                Home <span className="sr-only">(current)</span>
-                                            </Link>
+                                            
                                         </li>
                                         <li className="nav-item">
-                                            <Link className="nav-link" to="/about">
-                                                About
-                                            </Link>
+                                           
                                         </li>
                                         <li className="nav-item">
-                                            <Link className="nav-link" to="/treatment">
-                                                Treatment
-                                            </Link>
+                                            
                                         </li>
                                         <li className="nav-item">
-                                            <Link className="nav-link" to="/doctor">
-                                                Doctors
-                                            </Link>
+                                          
                                         </li>
                                         <li className="nav-item">
-                                            <Link className="nav-link" to="/testimonial">
-                                                Testimonial
-                                            </Link>
+                                           
                                         </li>
                                         <li className="nav-item">
-                                            <Link className="nav-link" to="/contact">
-                                                Contact Us
-                                            </Link>
+                                           
                                         </li>
                                     </ul>
                                 </div>
@@ -83,18 +53,36 @@ const HeaderSection = ({ isLoggedIn }) => {
                                     <>
                                         <Link to="/login">
                                             <i className="fa fa-user" aria-hidden="true"></i>
-                                            <span>Login</span>
+                                            <span>تسجيل الدخول</span>
                                         </Link>
                                         <Link to="/register">
                                             <i className="fa fa-user" aria-hidden="true"></i>
-                                            <span>Sign Up</span>
+                                            <span>انشاء حساب جديد</span>
                                         </Link>
                                     </>
                                 )}
                                 <form className="form-inline">
-                                    <button className="btn my-2 my-sm-0 nav_search-btn" type="submit">
-                                        <i className="fa fa-search" aria-hidden="true"></i>
-                                    </button>
+                                 
+                                    <a className="nav-item">
+                                            <Link className="nav-link" to="/hospital">
+                                                المستشفيات
+                                            </Link>
+                                        </a>
+                                        <a className="nav-item">
+                                            <Link className="nav-link" to="/testimonial">
+                                                حجز
+                                            </Link>
+                                        </a>
+                                        <a className="nav-item">
+                                            <Link className="nav-link" to="/about">
+                                                حول
+                                            </Link>
+                                        </a>
+                                        <a className="nav-item">
+                                            <Link className="nav-link" to="/contact">
+                                               تواصل معنا
+                                            </Link>
+                                        </a>
                                 </form>
                             </div>
                         </div>
