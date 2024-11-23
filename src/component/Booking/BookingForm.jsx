@@ -704,7 +704,6 @@ const BookingForm = () => {
                                 options={hospitals}
                                 isLoading={loadingHospitals}
                             />
-                            {/* Hidden doctor select  style={{ display: 'none' }} */}
                             <div style={{ display: 'none' }}>
                                 <SelectField 
                                     label="الدكتور"
