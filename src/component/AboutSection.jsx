@@ -1,10 +1,14 @@
-// src/components/AboutSection.jsx or src/pages/AboutSection.jsx
-import React from 'react';
-import aboutImg from '../images/about-img.jpg'; // Ensure the image path is correct
+import React, { useState } from 'react';
+import aboutImg from '../images/about-img.jpg';
+import HeaderSection from './HeaderSection';
 
-const AboutSection = () => {
+const AboutSection = ({ showHeader = true }) => { 
+    const [isLoggedIn, setIsLoggedIn] = useState(true);
+
     return (
         <>
+            {showHeader && <HeaderSection isLoggedIn={isLoggedIn} />}
+            
             <br />
             <br />
             <br />
@@ -26,9 +30,6 @@ const AboutSection = () => {
                                 <p>
                                     هي منصة خدمية تقدمها محافظة البحيرة لمواطنيها عبر منصة تفاعلية للتسهيل علي المواطنين قانطيها حجز تذاكر للأقسام المختلفة في المستشفيات الموجودة داخل المحافظة وللتقليل من عمليات التزاحم داخل المستشفيات.
                                 </p>
-                                {/* <a href="#more-info">
-                                    إقرأ المزيد
-                                </a> */}
                             </div>
                         </div>
                     </div>

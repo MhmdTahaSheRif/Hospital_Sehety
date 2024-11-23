@@ -24,7 +24,7 @@ const Footer = () => {
                         <h5>Contact Us</h5>
                         <p><i className="fa fa-phone"></i> +0201271858715</p>
                         <p><i className="fa fa-envelope"></i> mhmdtaha818@gmail.com</p>
-                        <p><i className="fa fa-map-marker"></i> Madint Nasr ,Cairo ,Egypt</p>
+                        <p><i className="fa fa-map-marker"></i> Madint Nasr ,Cairo ,Egypt</p> 
                     </div>
 
                     {/* عمود وسائل التواصل الاجتماعي */}

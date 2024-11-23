@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt } from 'react-icons/fa';
 import contactImage from '../images/contact-img.jpg'; // Replace with your image path
+import HeaderSection from './HeaderSection';
 
 const ContactUs = () => {
     const [name, setName] = useState('');
@@ -9,6 +10,7 @@ const ContactUs = () => {
     const [message, setMessage] = useState('');
     const [submitted, setSubmitted] = useState(false);
     const [showMap, setShowMap] = useState(false); // State to toggle map display
+    const [isLoggedIn, setIsLoggedIn] = useState(true);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -20,14 +22,15 @@ const ContactUs = () => {
             alert('Please fill out all fields!');
         }
     };
-
+    
     // Handle toggling map visibility
     const toggleMapVisibility = () => {
         setShowMap(!showMap); // Toggle the showMap state
     };
-
+    
     return (
         <div className="contact-us-page">
+            <HeaderSection isLoggedIn={isLoggedIn} />
             <section className="contact-banner">
             <div className="container" style={{ bottom: '20px' }}>
             <h1>تواصل معنا </h1>

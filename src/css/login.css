@@ -12,7 +12,6 @@ body>* {
 }
 * {
     outline: none;
-    padding: 0;
 }
 *, *:before, *:after {
     box-sizing: border-box;
@@ -28,7 +27,6 @@ div, ol, span, ul {
     scrollbar-width: thin;
 }
 .login-form-bx {
-    padding-bottom: 0;
     background-color: #fbfbfb;
     overflow: hidden;
 }
@@ -107,7 +105,6 @@ img, svg {
     border-color: #36C95F;
 }
 .btn {
-    padding: .938rem 1.5rem;
     border-radius: .75rem;
     font-weight: 500;
     font-size: 1rem;
@@ -152,7 +149,8 @@ img, svg {
     .login-form-bx .box-skew .authincation-content {
         width: 400px;
         right: 30px;
-        padding: 30px;
+        margin: 35px;
+        left:-225px
     }
     
     .login-form-bx .box-skew1:after {
@@ -166,7 +164,8 @@ img, svg {
         width: 90%;
         right: 50%;
         transform: translate(50%, -50%);
-        padding: 25px;
+        margin-top: 213px;
+        margin-bottom: -213px;
     }
     .login-form-bx .box-skew1 {
         display: none !important;
@@ -181,7 +180,6 @@ img, svg {
     }
     
     .btn {
-        padding: .75rem 1.25rem;
         font-size: 0.95rem;
     }
     
@@ -194,7 +192,8 @@ img, svg {
 @media screen and (max-width: 480px) {
     .login-form-bx .box-skew .authincation-content {
         width: 100%;
-        padding: 20px;
+        margin-top: 250px;
+
     }
     
     .form-control {
@@ -214,12 +213,10 @@ img, svg {
     }
     
     .login-form-bx .box-skew .authincation-content {
-        padding: 20px;
     }
 }
 .login-form-bx {
     overflow-y: auto;
-    padding: 20px;
     border: 1px solid #ddd;
     border-radius: 8px;
 }

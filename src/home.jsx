@@ -1,22 +1,21 @@
 import React, { useState } from 'react';
-import HeaderSection from './component/HeaderSection';
 import CustomCarousel from './component/CustomCarousel';
+import HeaderSection from './component/HeaderSection';
 import AboutSection from './component/AboutSection';
 import Footer from './component/Footer';
+
 const Home = () => {
     const [isLoggedIn, setIsLoggedIn] = useState(true);
     return (
         <div>
             <div className="hero_area">
-                {/* Header section */}
                 <HeaderSection isLoggedIn={isLoggedIn} />
-
-                {/* Slider section */}
+ 
                 <section className="slider_section">
                     <CustomCarousel />
                 </section>
             </div>
-            <AboutSection />
+            <AboutSection showHeader={false} />
             <Footer />
         </div>
     );

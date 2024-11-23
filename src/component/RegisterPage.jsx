@@ -19,10 +19,10 @@ const Register = () => {
     const navigate = useNavigate(); // Use useNavigate hook here
 
     // Regular Expressions for validation
-    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/; // Password validation regex
-    const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/; // Basic email format validation
-    const nationalNumberRegex = /^\d{15}$/; // Exactly 15 digits for national number
-    const contactNumberRegex = /^\d{12,15}$/; // Contact number between 12 and 15 digits
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+    const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/; 
+    const nationalNumberRegex = /^\d{14}$/;
+    const contactNumberRegex = /^\d{11}$/;
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -47,22 +47,21 @@ const Register = () => {
 
         // Validate national number (exactly 15 digits)
         if (!nationalNumberRegex.test(nationalNumber)) {
-            setErrorMessage('National number must be exactly 15 digits.');
+            setErrorMessage('National number must be exactly 14 digits.');
             return;
         }
 
         // Validate contact number (between 12 and 15 digits)
         if (!contactNumberRegex.test(contactNumber)) {
-            setErrorMessage('Contact number must be between 12 and 15 digits.');
+            setErrorMessage('Contact number must be 11 digits.');
             return;
         }
 
-        // Prepare the payload for the request
         const payload = {
             username: username,
             email: email,
             password: password,
-            PatientProfile: {
+            Profile: {
                 fullname: fullname,
                 national_number: nationalNumber,
                 contact_number: contactNumber,
@@ -72,14 +71,11 @@ const Register = () => {
             },
         };
 
-        // Log the payload to check its structure before making the request
         console.log('Payload being sent:', payload);
 
         try {
-            // Send a POST request to the registration endpoint
             const response = await axios.post('http://10.100.100.149:500/API/register/', payload);
 
-            // Check if registration was successful
             if (response.data && response.data.success) {
                 console.log('Registration successful!');
                 navigate('/login'); // Redirect to login after successful registration
@@ -117,7 +113,7 @@ const Register = () => {
                                     <div className="form-row">
                                         <div className="form-group">
                                             <label className="mb-2">
-                                           <span className="required">*</span>     <strong>اسم المستخدم</strong>
+                                           <span className="required">*</span> <strong>اسم المستخدم</strong>
                                             </label>
                                             <input
                                                 type="text"
@@ -155,7 +151,7 @@ const Register = () => {
                                         </div>
                                         <div className="form-group">
                                             <label className="mb-2">
-                                            <span className="required">*</span>  <strong>تأكيد الرقم السري</strong>
+                                            <span className="required">*</span> <strong>تأكيد الرقم السري</strong>
                                             </label>
                                             <input
                                                 type="password"
