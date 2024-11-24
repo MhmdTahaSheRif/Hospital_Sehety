@@ -12,7 +12,6 @@ const Location = () => {
                 (position) => {
                     const { latitude, longitude } = position.coords;
                     setLocation({ latitude, longitude });
-                    // Open Google Maps with the user's location
                     window.location.href = `https://www.google.com/maps?q=${latitude},${longitude}`;
                 },
                 (err) => {

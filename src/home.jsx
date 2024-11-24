@@ -15,7 +15,6 @@ const Home = () => {
                     <CustomCarousel />
                 </section>
             </div>
-            <AboutSection showHeader={false} />
             <Footer />
         </div>
     );

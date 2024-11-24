@@ -1,0 +1,141 @@
+.hospital-selector {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #f5f5f5;
+  }
+  
+  .hospital-content {
+    display: flex;
+    padding: 20px;
+    gap: 20px;
+    flex: 1;
+  }
+  
+  .map-container {
+    flex: 2;
+    height: 80vh;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+  
+  .map {
+    height: 100%;
+    width: 100%;
+  }
+  
+  .leaflet-container {
+    height: 100%;
+    width: 100%;
+  }
+  
+  .sidebar {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .search-section,
+  .specialties-section,
+  .hospitals-section {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .search-input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 16px;
+  }
+  
+  .specialties-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 10px;
+  }
+  
+  .specialty-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px;
+  }
+  
+  .hospitals-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-height: 400px;
+    overflow-y: auto;
+  }
+  
+  .hospital-card {
+    padding: 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 1px solid #eee;
+  }
+  
+  .hospital-card:hover {
+    background-color: #f8f8f8;
+    transform: translateY(-2px);
+  }
+  
+  .hospital-card.selected {
+    background-color: #e3f2fd;
+    border-color: #2196f3;
+  }
+  
+  .hospital-marker {
+    padding: 10px;
+    min-width: 200px;
+  }
+  
+  .specialties-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    margin: 8px 0;
+  }
+  
+  .specialty-tag {
+    background-color: #e3f2fd;
+    color: #1976d2;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+  }
+  
+  .view-details-btn {
+    background-color: #1976d2;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 8px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .view-details-btn:hover {
+    background-color: #1565c0;
+  }
+  
+  @media (max-width: 768px) {
+    .hospital-content {
+        flex-direction: column;
+    }
+    
+    .map-container {
+        height: 50vh;
+    }
+  }
+  

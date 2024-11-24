@@ -36,7 +36,7 @@ const ProfilePage = () => {
                                         alt="الصورة الشخصية"
                                         className="rounded-circle img-fluid"
                                         style={{ width: '150px', height: '150px', objectFit: 'cover' }}
-                                    />
+                                  />
                                 </div>
                                 <h4 className="mb-2">{userData?.fullname || 'الاسم'}</h4>
                                 {/* <p className="text-muted mb-4">{userData?.email || 'البريد الإلكتروني'}</p> */}
@@ -58,7 +58,7 @@ const ProfilePage = () => {
                                             disabled
                                         />
                                     </div>
-                                    <div className="mb-3">
+                                    {/* <div className="mb-3">
                                         <label className="form-label">البريد الإلكتروني</label>
                                         <input
                                             type="email"
@@ -66,7 +66,7 @@ const ProfilePage = () => {
                                             value={userData?.email || ''}
                                             disabled
                                         />
-                                    </div>
+                                    </div> */}
                                     <div className="mb-3">
                                         <label className="form-label">رقم الهاتف</label>
                                         <input

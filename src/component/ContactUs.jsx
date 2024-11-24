@@ -32,13 +32,12 @@ const ContactUs = () => {
         <div className="contact-us-page">
             <HeaderSection isLoggedIn={isLoggedIn} />
             <section className="contact-banner">
-            <div className="container" style={{ bottom: '20px' }}>
-            <h1>تواصل معنا </h1>
+            <div className="container" style={{ bottom: '20px', marginTop: '55px' }}>
                     <p></p>
                 </div>
             </section>
 
-            <section className="contact-info">
+            <section className="contact-info ">
                 <div className="container">
                     <div className="row">
                         <div className="col-lg-4 col-md-6">
@@ -114,7 +113,7 @@ const ContactUs = () => {
 
                         {/* Add the image next to the form */}
                         <div className="col-md-6">
-                            <div className="contact-image">
+                            <div className="contact-image" style={{marginLeft:'180px'}}>
                             <img src={contactImage} alt="Contact Us" className="img-fluid" style={{ borderRadius: '25px' }} />
                             </div>
                         </div>

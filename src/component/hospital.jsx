@@ -1,71 +1,174 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
-import Select from "react-select";
-import HeaderSection from "./HeaderSection";
+import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
+import HeaderSection from "../component/HeaderSection";
+import { hospitalsData } from "./hospitalData";
+import "leaflet/dist/leaflet.css";
+import L from 'leaflet';
+import "../css/HospitalSelector.css";
 
+// تعريف أيقونة العلامة
+const customIcon = new L.Icon({
+  iconUrl: 'https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon.png',
+  shadowUrl: 'https://unpkg.com/leaflet@1.7.1/dist/images/marker-shadow.png',
+  iconSize: [25, 41],
+  iconAnchor: [12, 41],
+  popupAnchor: [1, -34],
+  shadowSize: [41, 41]
+});
 
-const API_URL = "https://your-api-url.com/hospitals";
+const MapController = ({ center }) => {
+  const map = useMap();
+  useEffect(() => {
+    map.setView(center, 13);
+  }, [center, map]);
+  return null;
+};
 
 const HospitalSelector = () => {
-  const [hospitals, setHospitals] = useState([]);
+  const [filteredHospitals, setFilteredHospitals] = useState(hospitalsData);
   const [selectedHospital, setSelectedHospital] = useState(null);
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [selectedSpecialties, setSelectedSpecialties] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
 
-  // Fetch hospitals data from API
-  const fetchHospitals = async () => {
-    try {
-      const response = await axios.get(API_URL);
-      console.log("API Response:", response); // Check the entire response
-      
-      // Check if response.data is an array
-      if (Array.isArray(response.data)) {
-        setHospitals(response.data); // Set hospitals data if it's an array
-      } else {
-        console.error("Expected an array of hospitals, but received:", response.data);
-      }
-    } catch (error) {
-      console.error("Error fetching hospitals:", error);
-    }
+  const handleSpecialtiesChange = (specialty) => {
+    const newSelected = selectedSpecialties.includes(specialty)
+      ? selectedSpecialties.filter(item => item !== specialty)
+      : [...selectedSpecialties, specialty];
+    setSelectedSpecialties(newSelected);
   };
 
   useEffect(() => {
-    fetchHospitals();
-  }, []);
+    let filtered = hospitalsData;
+    if (selectedSpecialties.length > 0) {
+      filtered = filtered.filter(hospital =>
+        hospital.specialties.some(spec => selectedSpecialties.includes(spec))
+      );
+    }
+    if (searchTerm) {
+      filtered = filtered.filter(hospital =>
+        hospital.name.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+    }
+    setFilteredHospitals(filtered);
+  }, [selectedSpecialties, searchTerm]);
 
-  // Ensure that hospitals is an array before mapping over it
-  const hospitalOptions = Array.isArray(hospitals)
-    ? hospitals.map((hospital) => ({
-        value: hospital.id,  // Unique ID for each hospital
-        label: hospital.name,  // Name to display in the dropdown
-      }))
-    : [];
+  const defaultCenter = { lat: 31.2497, lng: 30.6359 };
+  const specialtiesList = [
+    "جراحة",
+    "طب الباطنة",
+    "طب الأطفال",
+    "نسائية وتوليد",
+    "جراحة العظام",
+    "طب القلب",
+    "طوارئ",
+    "عيون",
+    "أسنان",
+    "مسالك بولية",
+    "أنف وأذن وحنجرة",
+    "صدر",
+    "أمراض صدرية",
+    "علاج طبيعي",
+    "جراحة عامة",
+    "باطنة"
+  ];
 
-  const handleHospitalChange = (selectedOption) => {
-    setSelectedHospital(selectedOption);
-    console.log("Selected Hospital: ", selectedOption);
-  };
 
   return (
-    <div>
-       <HeaderSection isLoggedIn={isLoggedIn} />
-      <h1>Select a Hospital</h1>
-      {Array.isArray(hospitals) && hospitals.length > 0 ? (
-        <Select
-          options={hospitalOptions}
-          onChange={handleHospitalChange}
-          value={selectedHospital}
-          placeholder="Select a hospital"
-        />
-      ) : (
-        <p>Loading hospitals...</p>
-      )}
-      {selectedHospital && (
-        <div>
-          <h3>Selected Hospital Details</h3>
-          <p>ID: {selectedHospital.value}</p>
-          <p>Name: {selectedHospital.label}</p>
+    <div className="hospital-selector">
+      <HeaderSection isLoggedIn={true} />
+      <h1 style={{ textAlign: "center", paddingTop: "10px" }}>المستشفيات المتواجدة في محافظة البحيرة </h1>
+      <div className="hospital-content">
+
+        <div className="map-container">
+          <MapContainer
+            center={selectedHospital?.coordinates || defaultCenter}
+            zoom={11}
+            className="map"
+            scrollWheelZoom={true}
+          >
+            <TileLayer
+              url="https://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}"
+              attribution='&copy; Google Maps'
+            />
+            {filteredHospitals.map((hospital) => (
+              <Marker
+                key={hospital.id}
+                position={hospital.coordinates}
+                icon={customIcon}
+                eventHandlers={{
+                  click: () => setSelectedHospital(hospital)
+                }}
+              >
+                <Popup>
+                  <div className="hospital-marker">
+                    <h4>{hospital.name}</h4>
+                    <p>{hospital.address}</p>
+                    <div className="specialties-tags">
+                      {hospital.specialties.map((specialty, index) => (
+                        <span key={index} className="specialty-tag">
+                          {specialty}
+                        </span>
+                      ))}
+                    </div>
+                    <button
+                      className="view-details-btn"
+                      onClick={() => setSelectedHospital(hospital)}
+                    >
+                      عرض التفاصيل
+                    </button>
+                  </div>
+                </Popup>
+              </Marker>
+            ))}
+            {selectedHospital && <MapController center={selectedHospital.coordinates} />}
+          </MapContainer>
         </div>
-      )}
+
+        <div className="sidebar">
+          <div className="search-section">
+            <input
+              type="text"
+              placeholder="ابحث عن مستشفى..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="search-input"
+            />
+          </div>
+
+          <div className="specialties-section">
+            <h3>التخصصات</h3>
+            <div className="specialties-grid">
+              {specialtiesList.map((specialty) => (
+                <div key={specialty} className="specialty-item">
+                  <input
+                    type="checkbox"
+                    id={specialty}
+                    checked={selectedSpecialties.includes(specialty)}
+                    onChange={() => handleSpecialtiesChange(specialty)}
+                  />
+                  <label htmlFor={specialty}>{specialty}</label>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="hospitals-section">
+            <h3>المستشفيات</h3>
+            <div className="hospitals-list">
+              {filteredHospitals.map((hospital) => (
+                <div
+                  key={hospital.id}
+                  className={`hospital-card ${selectedHospital?.id === hospital.id ? 'selected' : ''}`}
+                  onClick={() => setSelectedHospital(hospital)}
+                >
+                  <h4>{hospital.name}</h4>
+                  <p>{hospital.address}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

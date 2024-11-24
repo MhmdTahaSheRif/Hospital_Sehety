@@ -12,6 +12,7 @@ import TicketsPage from './component/Booking/TicketsPage';
 import LogoutPage from './component/LogoutPage';
 import ProfilePage from './component/ProfilePage';
 import HospitalSelector from './component/hospital';
+import Settings from './component/settings';
 import { UserProvider } from './component/UserContext';
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -22,6 +23,7 @@ const App = () => {
         <Routes>
           <Route path="/home" element={<Home />} />
           <Route path="/" element={<LoginPage />} />
+          <Route path="/settings" element={< Settings/>} />
           <Route path="/register" element={<Register />} />
           <Route path="/hospital" element={<HospitalSelector />} />
           <Route path="/about" element={<AboutSection />} />

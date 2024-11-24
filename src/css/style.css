@@ -8,6 +8,8 @@ body {
   font-size: larger;
   font-weight: bolder;
   font-family: 'cairo';
+  background-image: url('../images/pattern.png');
+  background-size: cover;
 
 }
 
@@ -1179,3 +1181,111 @@ a:focus {
   margin: 8px 0;
 }
 
+/* ستايل عام للمودال */
+.modal-content {
+  border-radius: 15px; /* زاوية دائرية للمودال */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* إضافة ظل ناعم حول المودال */
+  background-color: #ffffff; /* خلفية بيضاء للمودال */
+  text-align: end;
+}
+
+.modal-header {
+  background-color: #f8f9fa; /* خلفية خفيفة للـ header */
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+
+.modal-body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* خط ناعم */
+  color: #6c757d; /* نص بلون هادئ */
+}
+
+.modal-footer {
+  border-top: 1px solid #e9ecef; /* إضافة خط فاصل ناعم */
+}
+
+button {
+  border-radius: 25px; /* جعل الزر ذو حواف دائرية */
+  padding: 10px 20px;
+  font-weight: bold;
+  transition: all 0.3s ease; /* تأثير ناعم عند التفاعل مع الأزرار */
+}
+
+button:hover {
+  background-color: #007bff; /* تغيير اللون عند التمرير */
+  color: white;
+}
+
+textarea {
+  border-radius: 8px; /* جعل الحواف دائرية */
+  border: 1px solid #ced4da; /* حدود خفيفة */
+  padding: 10px;
+  width: 100%;
+  resize: none; /* منع تغيير حجم مربع النص */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+textarea:focus {
+  outline: none;
+  border-color: #007bff; /* تغيير اللون عند التركيز */
+}
+
+select {
+  border-radius: 8px;
+  border: 1px solid #ced4da;
+  padding: 10px;
+  width: 100%;
+}
+
+select:focus {
+  outline: none;
+  border-color: #007bff;
+}
+.map-container {
+  flex: 2;
+  height: 80vh;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.map {
+  height: 100%;
+  width: 100%;
+}
+
+.hospital-marker {
+  padding: 12px;
+  min-width: 250px;
+}
+
+.specialties-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin: 8px 0;
+}
+
+.specialty-tag {
+  background-color: #e3f2fd;
+  color: #1976d2;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+}
+
+.view-details-btn {
+  background-color: #1976d2;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 8px;
+  transition: background-color 0.3s ease;
+}
+
+.view-details-btn:hover {
+  background-color: #1565c0;
+}
