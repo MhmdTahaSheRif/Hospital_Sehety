@@ -1,22 +1,23 @@
 import React from 'react';
 import { Carousel } from 'react-bootstrap';
-import slider_img from '../images/1.jpg'
-import slider_img2 from '../images/2.jpg'
-import slider_img3 from '../images/3.jpg'
-import next from '../images/next.png'
-import prev from '../images/prev.png'
+import slider_img from '../images/1.jpg';
+import slider_img2 from '../images/2.jpg';
+import slider_img3 from '../images/3.jpg';
+import next from '../images/next.png';
+import prev from '../images/prev.png';
+import '../css/style.css';
 
-import '../css/style.css'
 const CustomCarousel = () => {
   return (
     <section className="slider_section" style={{ direction: "rtl" }}>
-      {/* <div className="dot_design">
-        <img src={dots} alt="dots" />
-      </div> */}
+      {/* Video Section Above Carousel */}
+ 
+
+      {/* Carousel Section */}
       <Carousel id="customCarousel1" controls={false} indicators={false}>
         <Carousel.Item>
           <div className="container">
-            <div className="row">
+            <div className="row align-items-center">
               <div className="col-md-6">
                 <div className="detail-box">
                   <div className="play_btn">
@@ -29,9 +30,11 @@ const CustomCarousel = () => {
                     <span>صحتـــي</span>
                   </h1>
                   <p>
-                 هي منصة خدمية تقدمها     محافظة البحيرة لمواطنيها عبر منصة تفاعلية للتسهيل علي المواطنين قانطيها حجز تذاكر للأقسام المختلفة في المستشفيات الموجودة داخل المحافظة وللتقليل من عمليات التزاحم داخل المستشفيات  .
+                    هي منصة خدمية تقدمها محافظة البحيرة لمواطنيها عبر منصة تفاعلية للتسهيل علي المواطنين قانطيها حجز تذاكر للأقسام المختلفة في المستشفيات الموجودة داخل المحافظة وللتقليل من عمليات التزاحم داخل المستشفيات.
                   </p>
-                  <a style={{ textDecoration: 'none' }} href="/contact">تواصــل معنــا</a>
+                  <a href="/contact" className="carousel-link">
+                    تواصــل معنــا
+                  </a>
                 </div>
               </div>
               <div className="col-md-6">
@@ -42,6 +45,7 @@ const CustomCarousel = () => {
             </div>
           </div>
         </Carousel.Item>
+
         <Carousel.Item>
           <div className="container">
             <div className="row">
@@ -57,9 +61,11 @@ const CustomCarousel = () => {
                     <span>صحتـــي</span>
                   </h1>
                   <p>
-                    هي منصة خدمية تقدمها     محافظة البحيرة لمواطنيها عبر منصة تفاعلية للتسهيل علي المواطنين قانطيها حجز تذاكر للأقسام المختلفة في المستشفيات الموجودة داخل المحافظة وللتقليل من عمليات التزاحم داخل المستشفيات  .
+                    هي منصة خدمية تقدمها محافظة البحيرة لمواطنيها عبر منصة تفاعلية للتسهيل علي المواطنين قانطيها حجز تذاكر للأقسام المختلفة في المستشفيات الموجودة داخل المحافظة وللتقليل من عمليات التزاحم داخل المستشفيات.
                   </p>
-                  <a style={{ textDecoration: 'none' }} href="/contact">تواصــل معنــا</a>
+                  <a href="/contact" className="carousel-link">
+                    تواصــل معنــا
+                  </a>
                 </div>
               </div>
               <div className="col-md-6">
@@ -70,6 +76,7 @@ const CustomCarousel = () => {
             </div>
           </div>
         </Carousel.Item>
+
         <Carousel.Item>
           <div className="container">
             <div className="row">
@@ -85,9 +92,11 @@ const CustomCarousel = () => {
                     <span>صحتـــي</span>
                   </h1>
                   <p>
-                    هي منصة خدمية تقدمها     محافظة البحيرة لمواطنيها عبر منصة تفاعلية للتسهيل علي المواطنين قانطيها حجز تذاكر للأقسام المختلفة في المستشفيات الموجودة داخل المحافظة وللتقليل من عمليات التزاحم داخل المستشفيات  .
+                    هي منصة خدمية تقدمها محافظة البحيرة لمواطنيها عبر منصة تفاعلية للتسهيل علي المواطنين قانطيها حجز تذاكر للأقسام المختلفة في المستشفيات الموجودة داخل المحافظة وللتقليل من عمليات التزاحم داخل المستشفيات.
                   </p>
-                  <a style={{ textDecoration: 'none' }} href="/contact">تواصــل معنــا</a>
+                  <a href="/contact" className="carousel-link">
+                    تواصــل معنــا
+                  </a>
                 </div>
               </div>
               <div className="col-md-6">
@@ -98,9 +107,9 @@ const CustomCarousel = () => {
             </div>
           </div>
         </Carousel.Item>
-
       </Carousel>
 
+      {/* Carousel Controls */}
       <div className="carousel_btn-box">
         <a className="carousel-control-next" href="#customCarousel1" role="button" data-slide="next">
           <img src={next} alt="Next" />
@@ -110,7 +119,6 @@ const CustomCarousel = () => {
           <img src={prev} alt="Previous" />
           <span className="sr-only">السابق</span>
         </a>
-
       </div>
     </section>
   );

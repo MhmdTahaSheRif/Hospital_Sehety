@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import CustomCarousel from './component/CustomCarousel';
 import HeaderSection from './component/HeaderSection';
-import AboutSection from './component/AboutSection';
+import Video from './component/video';
 import Footer from './component/Footer';
 
 const Home = () => {
@@ -10,7 +10,14 @@ const Home = () => {
         <div>
             <div className="hero_area">
                 <HeaderSection isLoggedIn={isLoggedIn} />
- 
+                
+                <section className="slider_section">
+                    <Video />
+                </section>
+                <br></br>
+                <br></br>
+                <br></br>
+                <br></br>
                 <section className="slider_section">
                     <CustomCarousel />
                 </section>

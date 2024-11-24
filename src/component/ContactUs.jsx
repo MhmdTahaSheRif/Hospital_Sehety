@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt } from 'react-icons/fa';
 import contactImage from '../images/contact-img.jpg'; // Replace with your image path
 import HeaderSection from './HeaderSection';
+import Footer from '../component/Footer'; // Upload icon image
 
 const ContactUs = () => {
     const [name, setName] = useState('');
@@ -106,7 +107,7 @@ const ContactUs = () => {
                                         required
                                     ></textarea>
                                 </div>
-                                <button type="submit" className="btn btn-primary">ارسال</button>
+                                <button type="submit" className="btn btn-primary" style={{margin:'10px'}}>ارسال</button>
                             </form>
                             {submitted && <div className="alert alert-success mt-4">تم ارسال الطلب بنجاح!</div>}
                         </div>
@@ -120,6 +121,8 @@ const ContactUs = () => {
                     </div>
                 </div>
             </section>
+            <Footer/>
+
         </div>
     );
 };

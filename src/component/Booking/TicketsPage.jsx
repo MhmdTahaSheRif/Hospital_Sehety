@@ -4,6 +4,7 @@ import DataTable from 'react-data-table-component';
 import HeaderSection from '../HeaderSection';
 import BookingConfirmationModal from './BookingConfirmationModal';
 import { useUser } from '../UserContext.js';
+import Footer from '../../component/Footer'; // Upload icon image
 
 const TicketsPage = () => {
   const { userData, loading } = useUser();
@@ -128,6 +129,7 @@ const TicketsPage = () => {
         </div>
       </div>
 
+      <Footer/>
       {selectedBooking && (
         <BookingConfirmationModal
           show={modalShow}

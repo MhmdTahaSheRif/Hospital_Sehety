@@ -13,6 +13,7 @@ import LogoutPage from './component/LogoutPage';
 import ProfilePage from './component/ProfilePage';
 import HospitalSelector from './component/hospital';
 import Settings from './component/settings';
+import Video from './component/video';
 import { UserProvider } from './component/UserContext';
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);

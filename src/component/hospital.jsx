@@ -5,6 +5,7 @@ import { hospitalsData } from "./hospitalData";
 import "leaflet/dist/leaflet.css";
 import L from 'leaflet';
 import "../css/HospitalSelector.css";
+import Footer from '../component/Footer'; // Upload icon image
 
 // تعريف أيقونة العلامة
 const customIcon = new L.Icon({
@@ -79,8 +80,8 @@ const HospitalSelector = () => {
       <h1 style={{ textAlign: "center", paddingTop: "10px" }}>المستشفيات المتواجدة في محافظة البحيرة </h1>
       <div className="hospital-content">
 
-        <div className="map-container">
-          <MapContainer
+        <div className="map-container" style={{height:'1030px'}}>
+          <MapContainer 
             center={selectedHospital?.coordinates || defaultCenter}
             zoom={11}
             className="map"
@@ -152,7 +153,7 @@ const HospitalSelector = () => {
             </div>
           </div>
 
-          <div className="hospitals-section">
+          <div className="hospitals-section" >
             <h3>المستشفيات</h3>
             <div className="hospitals-list">
               {filteredHospitals.map((hospital) => (
@@ -169,6 +170,7 @@ const HospitalSelector = () => {
           </div>
         </div>
       </div>
+      <Footer/>
     </div>
   );
 };
