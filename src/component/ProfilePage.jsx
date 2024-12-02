@@ -25,7 +25,7 @@ const ProfilePage = () => {
         <div>
             <HeaderSection isLoggedIn={true} />
 
-            <div className="container my-5" dir="rtl">
+            <div className="container my-5" dir="rtl" style={{padding:'32px', margin:'10px auto'}}>
                 <div className="row">
                     <div className="col-md-4 mb-4">
                         <div className="card">

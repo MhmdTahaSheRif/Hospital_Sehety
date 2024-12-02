@@ -1,41 +1,84 @@
-import React, { useState } from 'react';
-import { Modal, Button } from 'react-bootstrap';
+import React, { useState, useEffect } from 'react';
+import { Modal, Button, Form } from 'react-bootstrap';
 import axios from 'axios';
-
+import { useNavigate } from 'react-router-dom';
 const BookingConfirmationModal = ({ show, onHide, bookingData }) => {
-  // إضافة حالة لحفظ التشخيص
+  const navigate = useNavigate();
   const [diagnosis, setDiagnosis] = useState('');
+  const [comment, setComment] = useState('');
+  const [searchTerm, setSearchTerm] = useState('');
+  const [medications, setMedications] = useState([]);
+  const [selectedMedications, setSelectedMedications] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
 
-  // دالة لمعالجة التغيير في التشخيص
-  const handleDiagnosisChange = (e) => {
-    setDiagnosis(e.target.value);
+  // Search medications
+  const searchMedications = async (term) => {
+    try {
+      const response = await axios.get(
+        `http://10.100.100.149:500/API/medications/search/?search=${term}`,
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+          },
+        }
+      );
+      setMedications(response.data);
+    } catch (error) {
+      console.error('Error searching medications:', error);
+    }
   };
 
-  // دالة لإرسال تأكيد الحجز إلى API
+  // Handle medication search input
+  const handleSearchChange = (e) => {
+    const term = e.target.value;
+    setSearchTerm(term);
+    if (term.length >= 2) {
+      searchMedications(term);
+    } else {
+      setMedications([]);
+    }
+  };
+
+  // Handle medication selection
+  const handleMedicationSelect = (medication) => {
+    if (!selectedMedications.find(med => med.id === medication.id)) {
+      setSelectedMedications([...selectedMedications, medication]);
+    }
+    setSearchTerm('');
+    setMedications([]);
+  };
+
+  // Remove selected medication
+  const handleRemoveMedication = (medicationId) => {
+    setSelectedMedications(selectedMedications.filter(med => med.id !== medicationId));
+  };
+
   const handleConfirmBooking = async () => {
     setIsLoading(true);
-    setErrorMessage('');  // إعادة تعيين الرسالة عند الضغط على التأكيد
+    setErrorMessage('');
+
     try {
-      // إرسال البيانات إلى API
       const response = await axios.post(
-        'http://10.100.100.149:500/API/Booking/confirm',  // تغيير الرابط إلى الرابط المناسب
+        'http://10.100.100.149:500/API/BookingConfirmation/',
         {
-          booking_id: bookingData.id,  // استخدم id الحجز من البيانات
+          booking: bookingData.id,
           diagnosis: diagnosis,
+          comment: comment,
+          medication: selectedMedications.map(med => med.id)
         },
         {
           headers: {
-            Authorization: `Bearer ${localStorage.getItem('accessToken')}`,  // إضافة التوكن إذا لزم الأمر
+            Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
           },
         }
       );
 
-      // التحقق من الرد والتعامل مع التأكيد
-      if (response.status === 200) {
+      if (response.data.message === "Booking confirmation created successfully") {
         alert('تم تأكيد الحجز بنجاح!');
-        onHide();  // إغلاق المودال بعد التأكيد
+        onHide();
+        navigate('/tickets'); 
+        window.location.reload();
       }
     } catch (error) {
       setErrorMessage('فشل في تأكيد الحجز، يرجى المحاولة مرة أخرى.');
@@ -45,47 +88,95 @@ const BookingConfirmationModal = ({ show, onHide, bookingData }) => {
     }
   };
 
-  if (!bookingData) {
-    return null;  // إذا كانت البيانات غير موجودة، لا تعرض الموديول
-  }
+  if (!bookingData) return null;
 
   return (
-    <Modal show={show} onHide={onHide}>
+    <Modal show={show} onHide={onHide} size="lg">
       <Modal.Header closeButton>
         <Modal.Title>تفاصيل الحجز</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <p><strong>رقم الحجز:</strong> {bookingData.patient_number}</p>
-        <p><strong>اسم المريض:</strong> {bookingData.patient}</p>
-        <p><strong>اسم الدكتور:</strong> {bookingData.doctor}</p>
-        <p><strong>تاريخ الحجز:</strong> {new Date(bookingData.booking_date).toLocaleString('ar')}</p>
-        <p><strong>المستشفى:</strong> {bookingData.hospital}</p>
-        <p><strong>التخصص:</strong> {bookingData.specialties}</p>
+        <div className="booking-details">
+          <p><strong>رقم الحجز:</strong> {bookingData.patient_number}</p>
+          <p><strong>اسم المريض:</strong> {bookingData.patient}</p>
+          <p><strong>اسم الدكتور:</strong> {bookingData.doctor}</p>
+          <p><strong>تاريخ الحجز:</strong> {new Date(bookingData.booking_date).toLocaleString('ar')}</p>
+          <p><strong>المستشفى:</strong> {bookingData.hospital}</p>
+          <p><strong>التخصص:</strong> {bookingData.specialties}</p>
+        </div>
 
-        {/* إضافة مربع نص لكتابة التشخيص */}
-        <div style={{ marginTop: '20px' }}>
-          <label htmlFor="diagnosis"><strong>التشخيص:</strong></label>
-          <textarea
-            id="diagnosis"
+        <Form.Group className="mb-3">
+          <Form.Label><strong>التشخيص:</strong></Form.Label>
+          <Form.Control
+            as="textarea"
+            rows={4}
             value={diagnosis}
-            onChange={handleDiagnosisChange}
-            rows="4"
-            style={{ width: '100%', padding: '8px', marginTop: '10px' }}
+            onChange={(e) => setDiagnosis(e.target.value)}
           />
+        </Form.Group>
+
+        <Form.Group className="mb-3">
+          <Form.Label><strong>ملاحظات:</strong></Form.Label>
+          <Form.Control
+            as="textarea"
+            rows={3}
+            value={comment}
+            onChange={(e) => setComment(e.target.value)}
+          />
+        </Form.Group>
+
+        <Form.Group className="mb-3">
+          <Form.Label><strong>بحث عن الأدوية:</strong></Form.Label>
+          <Form.Control
+            type="text"
+            value={searchTerm}
+            onChange={handleSearchChange}
+            placeholder="اكتب اسم الدواء..."
+          />
+          {medications.length > 0 && (
+            <div className="medication-search-results">
+              {medications.map(med => (
+                <div
+                  key={med.id}
+                  className="medication-item"
+                  onClick={() => handleMedicationSelect(med)}
+                  style={{ cursor: 'pointer', padding: '5px', borderBottom: '1px solid #eee' }}
+                >
+                  {med.ename}
+                </div>
+              ))}
+            </div>
+          )}
+        </Form.Group>
+
+        <div className="selected-medications">
+          <strong>الأدوية المختارة:</strong>
+          {selectedMedications.map(med => (
+            <div key={med.id} className="selected-medication-item">
+              {med.ename}
+              <Button
+                variant="outline-danger"
+                size="sm"
+                onClick={() => handleRemoveMedication(med.id)}
+              >
+                ✕
+              </Button>
+            </div>
+          ))}
         </div>
 
         {errorMessage && (
-          <div style={{ color: 'red', marginTop: '10px' }}>
+          <div className="error-message">
             {errorMessage}
           </div>
         )}
       </Modal.Body>
       <Modal.Footer>
         <Button variant="secondary" onClick={onHide}>إغلاق</Button>
-        <Button 
-          variant="primary" 
-          onClick={handleConfirmBooking} 
-          disabled={isLoading}  // تعطيل الزر أثناء التحميل
+        <Button
+          variant="primary"
+          onClick={handleConfirmBooking}
+          disabled={isLoading}
         >
           {isLoading ? 'جاري التأكيد...' : 'تأكيد الحجز'}
         </Button>

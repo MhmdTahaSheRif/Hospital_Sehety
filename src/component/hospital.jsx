@@ -6,7 +6,8 @@ import "leaflet/dist/leaflet.css";
 import L from 'leaflet';
 import "../css/HospitalSelector.css";
 import Footer from '../component/Footer'; // Upload icon image
-
+import { useUser } from './UserContext';
+import LoadingPage from './LoadingPage';
 // تعريف أيقونة العلامة
 const customIcon = new L.Icon({
   iconUrl: 'https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon.png',
@@ -37,6 +38,13 @@ const HospitalSelector = () => {
       : [...selectedSpecialties, specialty];
     setSelectedSpecialties(newSelected);
   };
+  const openGoogleMapsDirections = (hospital) => {
+    const { lat, lng } = hospital.coordinates;
+    const destination = `${lat},${lng}`;
+    const url = `https://www.google.com/maps/dir/?api=1&destination=${destination}`;
+    window.open(url, '_blank');
+  };
+
 
   useEffect(() => {
     let filtered = hospitalsData;
@@ -72,16 +80,18 @@ const HospitalSelector = () => {
     "جراحة عامة",
     "باطنة"
   ];
-
-
+  const { userData, loading } = useUser();
+  if (!userData && !loading) {
+    return <LoadingPage />;
+}else{
   return (
     <div className="hospital-selector">
       <HeaderSection isLoggedIn={true} />
       <h1 style={{ textAlign: "center", paddingTop: "10px" }}>المستشفيات المتواجدة في محافظة البحيرة </h1>
       <div className="hospital-content">
 
-        <div className="map-container" style={{height:'1030px'}}>
-          <MapContainer 
+        <div className="map-container" style={{ height: '1030px' }}>
+          <MapContainer
             center={selectedHospital?.coordinates || defaultCenter}
             zoom={11}
             className="map"
@@ -113,9 +123,9 @@ const HospitalSelector = () => {
                     </div>
                     <button
                       className="view-details-btn"
-                      onClick={() => setSelectedHospital(hospital)}
+                      onClick={() => openGoogleMapsDirections(hospital)}
                     >
-                      عرض التفاصيل
+                      الذهــاب للموقع
                     </button>
                   </div>
                 </Popup>
@@ -170,9 +180,10 @@ const HospitalSelector = () => {
           </div>
         </div>
       </div>
-      <Footer/>
+      <Footer />
     </div>
   );
+};
 };
 
 export default HospitalSelector;

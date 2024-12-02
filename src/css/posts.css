@@ -1,0 +1,259 @@
+/* Container Styles */
+.container_Post {
+    background: #00c6a929;
+    padding: 15px;
+    border-radius: 20px;
+}
+
+/* Post Card Styles */
+.post-card {
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, .1), 0px 8px 16px rgba(0, 0, 0, .1) !important;
+    padding: 15px;
+    background: white;
+}
+
+/* Post Header Styles */
+.post-header {
+    display: flex;
+    align-items: center;
+    padding: 12px 16px;
+    border-bottom: 1px solid #f0f2f5;
+}
+
+.post-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+    background-color: #e4e6eb;
+}
+
+.post-user-info {
+    flex-grow: 1;
+}
+
+.post-username {
+    font-weight: 600;
+    margin-bottom: 2px;
+}
+
+.post-timestamp {
+    font-size: 12px;
+    color: #65676b;
+}
+
+/* Post Content Styles */
+.post-content {
+    padding: 16px;
+}
+
+.post-text {
+    margin-bottom: 12px;
+    font-size: 15px;
+    line-height: 1.5;
+    text-align: right;
+}
+
+.post-image {
+    width: 100%;
+    border-radius: 12px;
+    max-height: 300px;
+    object-fit: cover;
+    margin-bottom: 12px;
+}
+
+/* Create Post Card Styles */
+.create-post-card {
+    background: white;
+    border-radius: 8px;
+    padding: 30px;
+    margin-bottom: 20px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, .1), 0px 8px 16px rgba(0, 0, 0, .1) !important;
+}
+
+.create-post-input {
+    background-color: #f0f2f5;
+    border-radius: 20px;
+    padding: 12px;
+    border: none;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+/* Post Actions Styles */
+.post-actions {
+    display: flex;
+    padding: 8px;
+    border-top: 1px solid #f0f2f5;
+}
+
+.post-action-button {
+    flex: 1;
+    text-align: center;
+    padding: 8px;
+    border-radius: 4px;
+    color: #65676b;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.post-action-button:hover {
+    background-color: #f0f2f5;
+}
+
+/* Navigation Tabs Styles */
+.nav-tabs {
+    border-bottom: 2px solid #e9ecef;
+    margin-bottom: 20px;
+}
+
+.nav-tabs .nav-link {
+    color: #64748b;
+    border: none;
+    padding: 12px 24px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.nav-tabs .nav-link:hover {
+    color: #00c6a9;
+    border: none;
+}
+
+.nav-tabs .nav-link.active {
+    color: #00c6a9;
+    border: none;
+    border-bottom: 2px solid #00c6a9;
+    background: transparent;
+}
+
+/* Form Elements Styles */
+.form-control {
+    border-radius: 12px;
+    padding: 0px 16px;
+    border: 1px solid #e8ecf3;
+}
+
+.form-control:focus {
+    border-color: #00c6a9;
+    box-shadow: 0 0 0 3px rgba(0, 198, 169, 0.1);
+}
+
+.btn-primary {
+    background-color: #00c6a9;
+    border: none;
+    border-radius: 12px;
+    padding: 12px 24px;
+}
+
+.btn-primary:hover {
+    background-color: #00b09b;
+}
+
+/* Filter Section Styles */
+.filter-section {
+    background: white;
+    border-radius: 8px;
+}
+
+.filter-section .form-control {
+    width: 150px;
+    text-align: center;
+}
+
+/* Comments Section Styles */
+.comments-section {
+    display: none;
+    padding: 15px;
+    border-top: 1px solid #eee;
+}
+
+.comments-section.show {
+    display: block;
+}
+
+.comment {
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    background-color: #f0f2f5;
+}
+
+.comment-user {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.comment-content {
+    margin-bottom: 5px;
+}
+
+.comment-timestamp {
+    font-size: 12px;
+    color: #65676b;
+}
+
+.comment-form {
+    margin-top: 15px;
+}
+
+.comment-form textarea {
+    border-radius: 20px;
+    padding: 10px 15px;
+    resize: none;
+}
+
+/* Pagination Styles */
+.pagination .page-link {
+    background-color: #fff;
+    border-color: #dee2e6;
+    color: #1877f2;
+    margin: 0 2px;
+}
+
+.pagination .page-item.active .page-link {
+    background-color: #1877f2;
+    border-color: #1877f2;
+    color: #fff;
+}
+
+.pagination .page-link:hover {
+    background-color: #e9ecef;
+    border-color: #dee2e6;
+    color: #1877f2;
+}
+.no-posts-message{
+    text-align:center;
+    padding: 40px;
+    background: white;
+    border-radius: 8px;
+    margin-top: 20px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, .1), 0px 8px 16px rgba(0, 0, 0, .1) !important;
+}
+.fa-inbox{
+    font-size: 48px;
+    color: #00c6a9;
+    margin-bottom: 15px;
+    display: block
+}
+.image-container {
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+    margin: 10px 0;
+    cursor: zoom-in;
+}
+
+.post-image {
+    width: 100%;
+    height: auto;
+    max-height: 200px;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+.post-image:hover {
+    transform: scale(1.02);
+}

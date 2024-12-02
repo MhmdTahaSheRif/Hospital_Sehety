@@ -1126,22 +1126,7 @@ a:focus {
   margin-right: 10px;
 }
 
-/* footer section*/
-.footer_section {
-  position: relative;
-  background-color: #252525;
-  text-align: center;
-}
 
-.footer_section p {
-  color: #ffffff;
-  padding: 25px 0;
-  margin: 0;
-}
-
-.footer_section p a {
-  color: inherit;
-}
 /*# sourceMappingURL=style.css.map */
 .dropdown-menu{
   background-color: #00c6a9;
@@ -1211,10 +1196,10 @@ button {
   transition: all 0.3s ease; /* تأثير ناعم عند التفاعل مع الأزرار */
 }
 
-button:hover {
-  background-color: #007bff; /* تغيير اللون عند التمرير */
+/* button:hover {
+  background-color: #007bff; 
   color: white;
-}
+} */
 
 textarea {
   border-radius: 8px; /* جعل الحواف دائرية */
@@ -1290,3 +1275,275 @@ select:focus {
   background-color: #1565c0;
 }
 
+/* Add this to your existing CSS */
+[data-aos] {
+  pointer-events: none;
+}
+
+[data-aos].aos-animate {
+  pointer-events: auto;
+}
+
+/* Optional: Add custom animation duration for specific elements */
+[data-aos][data-aos][data-aos-duration="1000"] {
+  transition-duration: 1000ms;
+}
+.video-container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.video-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 90%;
+  object-fit: cover;
+  z-index: -1;
+}
+
+/* Media Queries for better responsiveness */
+@media screen and (max-width: 768px) {
+  .video-container {
+    height: 60vh;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .video-container {
+    height: 40vh;
+  }
+}
+
+/* For landscape orientation on mobile devices */
+@media screen and (max-height: 480px) and (orientation: landscape) {
+  .video-container {
+    height: 100vh;
+  }
+}
+.medication-search-results {
+  position: absolute;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  max-height: 200px;
+  overflow-y: auto;
+  width: 100%;
+  z-index: 1000;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.medication-item:hover {
+  background-color: #f8f9fa;
+}
+
+.selected-medications {
+  margin-top: 20px;
+}
+
+.selected-medication-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 10px;
+  margin: 5px 0;
+  background-color: #f8f9fa;
+  border-radius: 4px;
+}
+
+.error-message {
+  color: red;
+  margin-top: 10px;
+  padding: 10px;
+  background-color: #fff3f3;
+  border-radius: 4px;
+}
+
+.booking-details {
+  margin-bottom: 20px;
+  padding: 15px;
+  background-color: #f8f9fa;
+  border-radius: 4px;
+}
+.logout-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.logout-card {
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 500px;
+}
+
+.logout-content {
+  padding: 2rem;
+  text-align: center;
+}
+
+.logout-logo {
+  max-width: 200px;
+  height: auto;
+  margin-bottom: 1.5rem;
+}
+
+.logout-title {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+
+.logout-text {
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+  .logout-card {
+      margin: 0 15px;
+  }
+
+  .logout-content {
+      padding: 1.5rem;
+  }
+
+  .logout-logo {
+      max-width: 150px;
+  }
+
+  .logout-title {
+      font-size: 1.5rem;
+  }
+
+  .logout-text {
+      font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .logout-content {
+      padding: 1rem;
+  }
+
+  .logout-logo {
+      max-width: 120px;
+  }
+
+  .logout-title {
+      font-size: 1.2rem;
+  }
+}
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f8f9fa;
+}
+
+.loading-content {
+  text-align: center;
+  padding: 2rem;
+}
+
+.loading-logo {
+  width: 200px;
+  height: auto;
+  margin-bottom: 2rem;
+  animation: pulse 2s infinite;
+}
+
+.loading-spinner {
+  width: 50px;
+  height: 50px;
+  border: 5px solid #f3f3f3;
+  border-top: 5px solid #3498db;
+  border-radius: 50%;
+  margin: 20px auto;
+  animation: spin 1s linear infinite;
+}
+
+.loading-text {
+  color: #333;
+  font-size: 1.5rem;
+  margin-top: 1rem;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+@media (max-width: 768px) {
+  .loading-logo {
+    width: 150px;
+  }
+  
+  .loading-text {
+    font-size: 1.2rem;
+  }
+}
+.medicine-image-container {
+  overflow: hidden;
+  height: 100%;
+}
+
+.medicine-image {
+  transition: transform 0.3s ease;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.medicine-image:hover {
+  transform: scale(1.2);
+}
+.loading-spinner {
+  text-align: center;
+  padding: 2rem;
+  color: #00c6a9;
+  font-weight: bold;
+}
+
+.error-message {
+  text-align: center;
+  padding: 2rem;
+  color: #dc3545;
+  font-weight: bold;
+}
+
+.form-control {
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  border: 1px solid #dee2e6;
+}
+
+.form-control:focus {
+  border-color: #00c6a9;
+  box-shadow: 0 0 0 0.2rem rgba(0, 198, 169, 0.25);
+}
+
+@media (max-width: 768px) {
+  .rdt_TableCell {
+      font-size: 14px;
+  }
+  
+  .btn-sm {
+      padding: 0.25rem 0.5rem;
+      font-size: 12px;
+  }
+}

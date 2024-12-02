@@ -1,14 +1,16 @@
-/* footer.css */
 .footer_section {
     background-color: #333;
-    color: #fff;
-    padding: 40px 0;
+    color: #555;
+    padding: 0px 0 1px;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+    text-align: center;
 }
 
 .footer_section h5 {
-    color: #fff;
-    margin-bottom: 20px;
-    font-weight: bold;
+    color: #333;
+    margin-bottom: 25px;
+    font-weight: 600;
+    font-size: 1.2rem;
 }
 
 .footer_links,
@@ -19,21 +21,57 @@
 
 .footer_links li,
 .social_links li {
-    margin-bottom: 10px;
+    margin-bottom: 15px;
 }
 
 .footer_links li a,
 .social_links li a {
-    color: #ddd;
+    color: #666;
     text-decoration: none;
+    transition: all 0.3s ease;
+    display: inline-block;
+    padding: 2px 0;
 }
 
 .footer_links li a:hover,
 .social_links li a:hover {
-    color: #fff;
+    color: #00c6a9;
+    transform: translateX(5px);
+}
+
+.social_links li a i {
+    margin-right: 8px;
+    font-size: 1.1rem;
+}
+
+.withus:hover{
+    color: #00c6a9;
+    transform: translateX(5px);
+}
+.footer_section p {
+    color: #666;
+    margin-bottom: 12px;
+}
+
+.footer_section i {
+    margin-right: 10px;
+    color: #00c6a9;
 }
 
 .footer_bottom {
-    margin-top: 30px;
-    font-size: 14px;
+
+    border-top: 1px solid #eee;
+    font-size: 0.9rem;
+    color: #888;
+}
+
+@media (max-width: 768px) {
+    .footer_section {
+        padding: 30px 0 15px;
+    }
+    
+    .col-md-4 {
+        margin-bottom: 30px;
+        text-align: center;
+    }
 }

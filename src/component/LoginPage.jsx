@@ -3,49 +3,41 @@ import { Link, useNavigate } from 'react-router-dom';
 import '../css/login.css';
 import logo from '../images/5.png';
 import axios from 'axios';
+import { useUser } from './UserContext';
 
 const LoginPage = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
-    const [tokens, setTokens] = useState({ access: '', refresh: '' });
     const [passwordError, setPasswordError] = useState('');
-    const navigate = useNavigate(); // Hook for navigation
+    const navigate = useNavigate();
+    const { fetchUserData } = useUser();
 
-    // Regular expression for password validation
     const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        // Check if password matches the regex
         if (!passwordRegex.test(password)) {
             setPasswordError('Password must be at least 8 characters long, contain at least one uppercase letter, one number, and one special character.');
             return;
         } else {
-            setPasswordError('');  // Clear any previous password errors
+            setPasswordError('');
         }
 
         try {
-            // Sending POST request to login endpoint
             const response = await axios.post('http://10.100.100.149:500/API/login/', {
-                username: username,  // use the state values
+                username: username,
                 password: password,
             });
 
-            // Check if the response contains the tokens
             if (response.data && response.data.access && response.data.refresh) {
-                // Store tokens in memory (in the component's state)
-                setTokens({
-                    access: response.data.access,
-                    refresh: response.data.refresh,
-                });
-
-                // Optionally store tokens in localStorage for persistence
                 localStorage.setItem('accessToken', response.data.access);
                 localStorage.setItem('refreshToken', response.data.refresh);
 
-                // Fetch user profile
+                // Fetch user data using the context
+                await fetchUserData();
+
                 const profileResponse = await axios.get('http://10.100.100.149:500/API/ProfileView/', {
                     headers: {
                         Authorization: `Bearer ${response.data.access}`,
@@ -54,9 +46,9 @@ const LoginPage = () => {
 
                 const { role } = profileResponse.data;
                 if (role === 2) {
-                    navigate('/tickets');  // Redirect to tickets page
-                } else if (role === 1) {
-                    navigate('/home');  // Redirect to home page
+                    navigate('/tickets');
+                } else if (role === 1 || role === 3) {
+                    navigate('/');
                 } else {
                     setErrorMessage('Unknown role, unable to determine redirect destination.');
                 }
@@ -79,7 +71,7 @@ const LoginPage = () => {
                 <div className="container-fluid">
                     <div className="row">
                         <div className="col-lg-6 col-md-7 box-skew d-flex">
-                            <div className="authincation-content" style={{margin:'0px'}}>
+                            <div className="authincation-content" style={{ margin: '0px' }}>
                                 <a className="login-logo" href="/">
                                     <img src={logo} alt="" className="logo-icon me-2" />
                                 </a>
@@ -95,8 +87,8 @@ const LoginPage = () => {
                                         <input
                                             type="text"
                                             className="form-control"
-                                            value={username}  
-                                            onChange={(e) => setUsername(e.target.value)}  
+                                            value={username}
+                                            onChange={(e) => setUsername(e.target.value)}
                                             required
                                         />
                                     </div>
@@ -107,15 +99,14 @@ const LoginPage = () => {
                                         <input
                                             type="password"
                                             className="form-control"
-                                            value={password}  
-                                            onChange={(e) => setPassword(e.target.value)}  
+                                            value={password}
+                                            onChange={(e) => setPassword(e.target.value)}
                                             required
                                         />
-                                        {/* Show password validation error */}
-                                        {passwordError && <p className="text-danger">{passwordError}</p>}  
+                                        {passwordError && <p className="text-danger">{passwordError}</p>}
                                     </div>
 
-                                    {errorMessage && <p className="text-danger">{errorMessage}</p>}  {/* Show general error message */}
+                                    {errorMessage && <p className="text-danger">{errorMessage}</p>}
 
                                     <div className="text-center">
                                         <button type="submit" className="btn btn-primary btn-block">
@@ -126,7 +117,7 @@ const LoginPage = () => {
 
                                 <div className="new-account mt-2">
                                     <p className="mb-0">ليس لديك حساب ؟
-                                        <Link className="text-primary" to="/">انشاء حساب جديد</Link> 
+                                        <Link className="text-primary" to="/register">انشاء حساب جديد</Link>
                                     </p>
                                 </div>
                             </div>

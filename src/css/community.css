@@ -1,0 +1,78 @@
+.community-page {
+    min-height: 100vh;
+}
+
+.create-post-card {
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, .1), 0px 8px 16px rgba(0, 0, 0, .1) !important;
+}
+
+.create-post-input {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    resize: none;
+    min-height: 100px;
+}
+
+.post-card {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, .1), 0px 8px 16px rgba(0, 0, 0, .1) !important;
+}
+
+.post-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.post-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #ddd;
+    margin-right: 10px;
+}
+
+.post-image {
+    max-width: 100%;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+
+.filter-section {
+    margin-bottom: 20px;
+}
+.no-posts-message{
+    text-align:center;
+    padding: 40px;
+    background: white;
+    border-radius: 8px;
+    margin-top: 20px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, .1), 0px 8px 16px rgba(0, 0, 0, .1) !important;
+}
+.fa-inbox{
+    font-size: 48px;
+    color: #00c6a9;
+    margin-bottom: 15px;
+    display: block
+}
+.post-image {
+    width: 100%;
+    height: auto;
+    max-height: 200px;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+.post-image:hover {
+    transform: scale(1.02);
+}

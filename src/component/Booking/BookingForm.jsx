@@ -389,6 +389,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import SelectField from './SelectField';
 import BookingModal from './BookingModal';
+import Footer from '../Footer'
 
 const BookingForm = () => {
     const [selectedCenter, setSelectedCenter] = useState('');
@@ -673,9 +674,9 @@ const BookingForm = () => {
             </div>
             <div className="col-md-8 col-lg-6">
                 <div className="card shadow-lg rounded-lg">
-                    <div className="card-body">
+                    <div className="card-body" style={{margin:'15px',padding:'4.25rem'}}>
                         <h4 className="card-title text-center text-primary mb-4">حجز التذكرة</h4>
-                        <form>
+                        <form >
                             <SelectField
                                 label="المركز"
                                 value={selectedCenter}
@@ -734,10 +735,10 @@ const BookingForm = () => {
     
             {showModal && (
                 <BookingModal
-                    isOpen={showModal}
-                    success={success}
-                    errorMessage={errorMessage}
-                    onClose={() => setShowModal(false)} // Close modal on button click
+                isOpen={showModal}
+                success={success}
+                errorMessage={errorMessage}
+                onClose={() => setShowModal(false)} // Close modal on button click
                 />
             )}
         </>

@@ -129,7 +129,7 @@
     background-color: #1565c0;
   }
   
-  @media (max-width: 768px) {
+  /* @media (max-width: 768px) {
     .hospital-content {
         flex-direction: column;
     }
@@ -137,5 +137,59 @@
     .map-container {
         height: 50vh;
     }
+  } */
+  /* Keep all existing styles as they are, and add these media queries at the bottom */
+
+@media screen and (max-width: 768px) {
+  .hospital-content {
+    flex-direction: column;
+    padding: 10px;
   }
-  
+
+  .map-container {
+    flex: none;
+    height: 500px !important;
+    margin-bottom: 20px;
+  }
+
+  .sidebar {
+    flex: none;
+    width: 100%;
+  }
+
+  .specialties-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .hospitals-list {
+    max-height: 300px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .hospital-content {
+    padding: 5px;
+  }
+
+  .specialties-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .map-container {
+    height: 300px;
+  }
+
+  .search-section,
+  .specialties-section,
+  .hospitals-section {
+    padding: 10px;
+  }
+
+  .hospital-card {
+    padding: 10px;
+  }
+
+  .specialty-tag {
+    font-size: 11px;
+  }
+}

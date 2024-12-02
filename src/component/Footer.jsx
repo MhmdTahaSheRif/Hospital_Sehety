@@ -10,35 +10,38 @@ const Footer = () => {
                 <div className="row">
                     {/* عمود الروابط */}
                     <div className="col-md-4">
-                        <h5>Quick Links</h5>
+                    <br/>
+                        <h5 style={{color:"#00c6a9"}}>روابط سريعة</h5>
                         <ul className="footer_links">
-                            <li><Link to="/home">Home</Link></li>
-                            <li><Link to="/about">About</Link></li>
-                            <li><Link to="/services">Services</Link></li>
-                            <li><Link to="/contact">Contact Us</Link></li>
+                            <li><Link to="/">الرئيسية</Link></li>
+                            <li><Link to="/">من نحن</Link></li>
+                            <li><Link to="/posts">اتصل بنا</Link></li>
                         </ul>
                     </div>
 
                     {/* عمود معلومات الاتصال */}
                     <div className="col-md-4">
-                        <h5>Contact Us</h5>
-                        <p><i className="fa fa-phone"></i> +0201271858715</p>
-                        <p><i className="fa fa-envelope"></i> mhmdtaha818@gmail.com</p>
-                        <p><i className="fa fa-map-marker"></i> Madint Nasr ,Cairo ,Egypt</p> 
+                    <br/>
+                        <h5  style={{color:"#00c6a9"}}>تواصل معنا </h5>
+                        <p className='withus'>+0201271858715 <i className="fa fa-phone"></i> </p>
+                        <p className='withus'>mhmdtaha818@gmail.com <i className="fa fa-envelope"></i> </p>
+                        <p className='withus'>مدينة نصر، القاهرة، مصر<i className="fa fa-map-marker"></i> </p>
                     </div>
 
                     {/* عمود وسائل التواصل الاجتماعي */}
                     <div className="col-md-4">
-                        <h5>Follow Us</h5>
+                    <br/>
+                        <h5 style={{color:"#00c6a9"}}>تابعنا </h5>
                         <ul className="social_links" >
-                            <li><a href="https://facebook.com" target="_blank" rel="noopener noreferrer" style={{ color: "#00c6a9" }}><i class="fa-brands fa-facebook"></i> Facebook</a></li>
-                            <li><a href="https://twitter.com" target="_blank" rel="noopener noreferrer" style={{ color: "#00c6a9" }}><i class="fa-brands fa-twitter"></i> Twitter</a></li>
-                            <li><a href="https://instagram.com" target="_blank" rel="noopener noreferrer" style={{ color: "#00c6a9" }}><i class="fa-brands fa-instagram"></i> Instagram</a></li>
+                            <li><a href="https://facebook.com" target="_blank" rel="noopener noreferrer" >فيسبوك <i className="fa-brands fa-facebook"></i></a></li>
+                            <li><a href="https://twitter.com" target="_blank" rel="noopener noreferrer" >تويتر <i className="fa-brands fa-twitter"></i></a></li>
+                            <li><a href="https://instagram.com" target="_blank" rel="noopener noreferrer" >انستجرام<i className="fa-brands fa-instagram"></i></a></li>
                         </ul>
                     </div>
                 </div>
                 <div className="footer_bottom text-center">
-                    <p>© {new Date().getFullYear()} Your Company. All Rights Reserved.</p>
+                    <br/>
+                    <p> جميع الحقوق محفوظة ©  NSDI {new Date().getFullYear()}</p>
                 </div>
             </div>
         </footer>

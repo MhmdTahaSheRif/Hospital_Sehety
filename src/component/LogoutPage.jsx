@@ -1,36 +1,66 @@
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import img from '../images/logo1.png'
+import { useUser } from './UserContext';  // Assuming you're using a context for managing user state
+import img from '../images/logo1.png';  // Your logo image path
+
 const LogoutPage = () => {
+    const { logout } = useUser();  // This clears the user data from context
     const navigate = useNavigate();
 
     useEffect(() => {
-        // Clear all stored data
-        localStorage.removeItem('token');
+        // Clear localStorage data
+        localStorage.clear();
+
+        // Clear sessionStorage data
         sessionStorage.clear();
 
-        // Redirect after 3 seconds
-        const timer = setTimeout(() => {
-            navigate('/');
-        }, 3000);
+        // Clear all cookies
+        document.cookie.split(";").forEach(cookie => {
+            document.cookie = cookie
+                .replace(/^ +/, "")
+                .replace(/=.*/, `=;expires=${new Date().toUTCString()};path=/`);
+        });
 
+        // Clear any cached data
+        if ('caches' in window) {
+            caches.keys().then(names => {
+                names.forEach(name => {
+                    caches.delete(name);
+                });
+            });
+        }
+
+        // Clear IndexedDB if used
+        indexedDB.databases().then(databases => {
+            databases.forEach(database => {
+                indexedDB.deleteDatabase(database.name);
+            });
+        });
+
+        // Call the logout function from the context to update the user state
+        logout();
+
+        // Wait for a bit and then navigate to the home or login page
+        const timer = setTimeout(() => {
+            navigate('/');  // Redirect to home page (or login page as needed)
+        }, 1000);  // 1 second delay for the logout process to complete
+
+        // Cleanup the timeout when the component unmounts
         return () => clearTimeout(timer);
-    }, [navigate]);
+    }, [logout, navigate]);
 
     return (
-        <div className="container">
-            <div className="row justify-content-center align-items-center min-vh-100">
-                <div className="col-md-6 text-center">
-                    <div className="card shadow-lg">
-                        <div className="card-body p-5">
-                            {/* <i className="fas fa-sign-out-alt text-primary fa-4x mb-3"></i> */}
-                            <img src={img} />
-                            <h2 className="mb-4">تسجيل الخروج</h2>
-                            <p className="lead">...جاري تسجيل خروجك من المنصة</p>
-                            <div className="spinner-border text-primary mt-3" role="status">
-                                <span className="visually-hidden"></span>
-                            </div>
-                        </div>
+        <div className="logout-container">
+            <div className="logout-card">
+                <div className="logout-content">
+                    {/* Display the logo */}
+                    <img src={img} alt="Logo" className="logout-logo" />
+                    <h2 className="logout-title">تسجيل الخروج</h2>
+                    <p className="logout-text">...جاري تسجيل خروجك من المنصة</p>
+
+                    {/* Loading Spinner */}
+                    <div className="spinner-border text-primary" role="status">
+                        <span className="visually-hidden">جاري التحميل...</span>
                     </div>
                 </div>
             </div>
