@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import CustomCarousel from './component/CustomCarousel';
+import CustomCarousel from './component/CustomCarousel'; // Import your custom carousel component
 import HeaderSection from './component/HeaderSection';
 import Video from './component/video';
 import Footer from './component/Footer';
@@ -33,14 +33,18 @@ const Home = () => {
                     <Video />
                 </section>
 
-                {/* Show custom carousel for everyone, logged in or not */}
+                {/* First carousel with first data */}
                 <section className="slider_section">
-                    <CustomCarousel />
+                    <CustomCarousel carouselId="customCarousel1" />
+                </section>
+
+                {/* Second carousel with different data */}
+                <section className="slider_section">
+                    <CustomCarousel carouselId="customCarousel2" isDifferentData={true} />
                 </section>
             </div>
-            <Footer />
 
-            {/* Footer is displayed to all users */}
+            <Footer />
         </div>
     );
 };

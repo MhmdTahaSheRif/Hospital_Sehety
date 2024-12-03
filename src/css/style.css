@@ -282,6 +282,8 @@ a:focus {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  flex-direction: column;
+
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -320,6 +322,7 @@ a:focus {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -1546,4 +1549,105 @@ select:focus {
       padding: 0.25rem 0.5rem;
       font-size: 12px;
   }
+}
+
+
+
+
+/* Ensures the buttons are fixed at the bottom of each carousel */
+.carousel-container {
+  position: relative;
+}
+
+.carousel_btn-box {
+  position: absolute;
+  bottom: 20px; /* Adjusts the distance from the bottom */
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 0%;
+  z-index: 10; /* Ensures buttons are always on top */
+}
+
+/* Ensure the buttons don't move when clicked */
+.carousel-control-prev, .carousel-control-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+  padding: 4px;
+  z-index: 10;
+  display: flex
+;
+  align-items: center;
+  justify-content: center;
+  height: 70px;
+  width: 80px;
+  margin: 20px;
+}
+
+.carousel-control-prev img, .carousel-control-next img {
+  width: 25px; /* Adjust size as needed */
+}
+
+.carousel-control-prev {
+  left: 0; /* Position on the left side */
+}
+
+.carousel-control-next {
+  right: 0; /* Position on the right side */
+}
+
+.slider_section {
+  margin-bottom: 50px; /* Add space between the carousels */
+}
+/* Ensure the buttons are fixed at the bottom of the carousel container */
+.carousel-container {
+  position: relative;
+  width: 100%;
+}
+
+.carousel_btn-box {
+  position: absolute;
+  bottom: 20px; /* Fixed distance from the bottom */
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 10px; /* Adjust the padding to your liking */
+  z-index: 10; /* Ensures buttons are always on top of the carousel content */
+}
+
+/* Style for previous and next buttons */
+.carousel-control-prev, .carousel-control-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  border-radius: 50%;
+  padding: 10px; /* Adjust the size of the button */
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 70px; /* Button height */
+  width: 70px; /* Button width */
+}
+
+.carousel-control-prev img, .carousel-control-next img {
+  width: 25px; /* Adjust icon size */
+}
+
+/* Positioning left and right buttons */
+.carousel-control-prev {
+  left: 10px; /* Adjust the left position */
+}
+
+.carousel-control-next {
+  right: 10px; /* Adjust the right position */
+}
+
+/* Ensure the slider section has enough space below */
+.slider_section {
+  margin-bottom: 50px; /* Space between the carousels */
 }

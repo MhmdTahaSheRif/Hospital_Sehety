@@ -173,6 +173,7 @@ const PatientList = () => {
         background: '#00c6a929',  
         padding: '40px',
         borderRadius: '20px'  
+        ,height:'60vh'
     }}>
 
                 <h1 className="text-center mb-4">قائمة المرضى</h1>

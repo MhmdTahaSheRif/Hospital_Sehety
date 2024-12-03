@@ -46,7 +46,7 @@ const LoginPage = () => {
 
                 const { role } = profileResponse.data;
                 if (role === 2) {
-                    navigate('/tickets');
+                    navigate('/');
                 } else if (role === 1 || role === 3) {
                     navigate('/');
                 } else {

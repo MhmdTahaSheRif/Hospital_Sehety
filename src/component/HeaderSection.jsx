@@ -73,9 +73,12 @@ const HeaderSection = ({ isLoggedIn }) => {
                                         <Link className={`nav-link ${isActive('/Community')}`} to="/Community">
                                             المجتمع الطبي
                                         </Link>
+                                        {(userData?.role === 1 || userData?.role === 3) && (
                                         <Link className={`nav-link ${isActive('/posts')}`} to="/posts">
                                             أسألتك
                                         </Link>
+                                                                                )}
+
                                         {(userData?.role === 1 || userData?.role === 2) && (
                                             <Link className={`nav-link ${isActive('/tickets')}`} to="/tickets">
                                                 الحجوزات
