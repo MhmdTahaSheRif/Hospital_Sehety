@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import CustomCarousel from './component/CustomCarousel'; // Import your custom carousel component
+import CustomCarousel from './component/CustomCarousel'; 
 import HeaderSection from './component/HeaderSection';
 import Video from './component/video';
 import Footer from './component/Footer';
@@ -33,7 +33,6 @@ const Home = () => {
                     <Video />
                 </section>
 
-                {/* First carousel with first data */}
                 <section className="slider_section">
                     <CustomCarousel carouselId="customCarousel1" />
                 </section>

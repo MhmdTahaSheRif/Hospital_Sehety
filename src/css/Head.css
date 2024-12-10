@@ -8,3 +8,20 @@
     font-size: 25px;
 
 }
+
+.quote_btn-container {
+    display: flex; /* Make it a flex container */ 
+}
+
+.navbar-collapse {
+    justify-content: flex-end; /* Ensure all items in navbar collapse are aligned to the left */
+}
+
+.navbar-nav {
+    display: flex;
+    flex-direction: row; /* Ensure the items are in a row */
+}
+
+.nav-item {
+    margin-left: 10px; /* Optional: Add spacing between items */
+}

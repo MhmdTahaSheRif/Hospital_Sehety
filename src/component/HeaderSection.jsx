@@ -45,7 +45,7 @@ const HeaderSection = ({ isLoggedIn }) => {
                             <span className=""> </span>
                         </button>
                         <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                            <div className="quote_btn-container" style={{right: '2px',position:'absolute'}}>
+                            <div className="quote_btn-container">
                                 {/* Conditionally render links based on login status */}
                                 {!userData && !loading && (
                                     <form className="form-inline">
